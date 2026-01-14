@@ -91,7 +91,7 @@ class meteoMQTTClient:
                 defaults={
                     'nom': config['nom'],
                     'type_capteur': config['type'],
-                    'localisation': 'Local',
+                    #'localisation': 'Local',
                 }
             )
  
@@ -104,7 +104,7 @@ class meteoMQTTClient:
  
             logger.info(
                 f"✔️ Mesure enregistrée - {capteur.nom}: "
-                f"{valeur}{config['unite']} à {mesure.date_mesure.strftime('%H:%M:%S')}"
+                #f"{valeur}{config['unite']} à {mesure.date_mesure.strftime('%H:%M:%S')}"
             )
  
         except ValueError as e:
@@ -130,3 +130,4 @@ if __name__ == '__main__':
     
     mqtt_client = meteoMQTTClient()
     mqtt_client.start()
+
