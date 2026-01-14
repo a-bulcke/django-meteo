@@ -31,9 +31,10 @@ class Mesure(models.Model):
     date_mesure = models.DateTimeField(auto_now_add=True)
  
     def __str__(self):
-        return f"{self.capteur.nom}: {self.valeur}{self.unite}"
+        return f"{self.capteur.nom}: {self.valeur}"
  
     class Meta:
         verbose_name = "Mesure"
         verbose_name_plural = "Mesures"
         ordering = ['-date_mesure']
+
