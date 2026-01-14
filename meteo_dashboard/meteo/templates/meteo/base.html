@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard Météo{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'meteo/css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <span class="navbar-brand">🌤️ Dashboard Météo</span>
+        </div>
+    </nav>
+ 
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="{% static 'meteo/js/charts.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% extends 'meteo/base.html' %}
+{% load static %}
+ 
+{% block title %}Dashboard - Météo{% endblock %} 
+ 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'meteo/css/dashboard.css' %}">
+{% endblock %}
+ 
+{% block content %}
+<h1>Dashboard en Temps Réel</h1>
+ 
+ 
+<!-- Métriques actuelles -->
+<div class="metrics-grid">
+    {% if mesures_actuelles.temperature %}
+    <div class="metric-card">
+        <div class="metric-icon">🌡️</div>
+        <div class="metric-label">Température</div>
+        <div class="metric-value">
+            {{ mesures_actuelles.temperature.valeur|floatformat:1 }}°C
+        </div>
+        <small class="metric-date">
+            Mise à jour: {{ mesures_actuelles.temperature.date|date:"H:i:s" }}
+        </small>
+    </div>
+    {% endif %}
+ 
+    <!-- TODO : Ajouter les cartes pour pression et humidité ici -->
+
+</div>
+ 
+<!-- Graphiques -->
+<div class="charts-grid">
+    <div class="chart-container">
+        <canvas id="temperatureChart"></canvas>
+    </div>
+
+    <!-- TODO : Ajouter les conteneurs graphiques pour pression et humidité -->
+ 
+</div>
+{% endblock %}

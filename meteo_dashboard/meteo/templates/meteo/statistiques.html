@@ -1,0 +1,82 @@
+{% extends 'meteo/base.html' %}
+{% load static %}
+ 
+{% block title %}Statistiques - Météo{% endblock %}
+ 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'meteo/css/statistiques.css' %}">
+{% endblock %}
+ 
+{% block content %}
+<div class="stats-header">
+    <h1>📊 Statistiques (Dernières 24h)</h1>
+    <p class="stats-subtitle">Analyse complète des données météorologiques</p>
+</div>
+ 
+<div class="stats-grid">
+    <!-- Température -->
+    {% if stats.temperature %}
+    <div class="stat-card">
+        <div class="stat-card-header">
+            <span class="stat-icon">🌡️</span>
+            <h2>Température</h2>
+        </div>
+        <div class="stat-card-body">
+            <div class="stat-row">
+                <span class="stat-label">Minimum</span>
+                <span class="stat-value stat-min">{{ stats.temperature.min|floatformat:1 }}°C</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Maximum</span>
+                <span class="stat-value stat-max">{{ stats.temperature.max|floatformat:1 }}°C</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Moyenne</span>
+                <span class="stat-value stat-avg">{{ stats.temperature.moyenne|floatformat:1 }}°C</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Mesures enregistrées</span>
+                <span class="stat-value stat-count">{{ stats.temperature.nombre }}</span>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="stat-card">
+        <div class="stat-card-header">
+            <span class="stat-icon">🌡️</span>
+            <h2>Température</h2>
+        </div>
+        <div class="stat-card-body">
+            <p class="no-data">Aucune donnée disponible</p>
+        </div>
+    </div>
+    {% endif %}
+ 
+    <!-- TODO : Ajouter la carte Pression ici -->
+    <!-- Structure identique à Température, utiliser stats.pression -->
+    <!-- Icône : 🔻, unite : hPa -->
+ 
+    <!-- TODO : Ajouter la carte Humidité ici -->
+    <!-- Structure identique à Température, utiliser stats.humidite -->
+    <!-- Icône : 💧, unite : % -->
+ 
+</div>
+ 
+<!-- Résumé général -->
+<div class="summary-section">
+    <h2>Résumé de la période</h2>
+    <div class="summary-content">
+        {% if stats.temperature %}
+            <p>Durant les dernières 24 heures, la température a varié de <strong>{{ stats.temperature.min|floatformat:1 }}°C</strong> à <strong>{{ stats.temperature.max|floatformat:1 }}°C</strong> avec une moyenne de <strong>{{ stats.temperature.moyenne|floatformat:1 }}°C</strong>.</p>
+            <p>Un total de <strong>{{ stats.temperature.nombre }}</strong> mesures de température ont été enregistrées au cours de cette période.</p>
+        {% else %}
+            <p>Aucune donnée disponible pour le moment.</p>
+        {% endif %}
+    </div>
+</div>
+ 
+<!-- Bouton retour -->
+<div class="action-section">
+    <a href="{% url 'dashboard' %}" class="btn-back">← Retour au Dashboard</a>
+</div>
+{% endblock %}
