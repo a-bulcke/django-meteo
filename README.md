@@ -70,63 +70,36 @@ Lorsque quÆun projet Django est généré (voir Comment créer un projet Django
 
 Ci-dessous voici la structure du projet ***meteo\_dashboard***á:
 
-meteo\_dashboard/
+meteo_dashboard/
+├── meteo_dashboard/		# Configuration du projet
+│   ├── settings.py			# Paramètres du projet
+│   ├── urls.py			# Routage principal
+│   └── asgi.py
+├── meteo/			# Application météo
+│   ├── models.py			# Modèles de données
+│   ├── views.py			# Logique métier
+│   ├── urls.py			# Routage de l'app
+│   ├── management/			# commandes personnalisées
+│   │   └── commands/
+│   │       ├── mqtt_client.py
+│   ├── templates/			# Templates HTML
+│   │   └── meteo/
+│   │       ├── base.html
+│   │       ├── dashboard.html
+│   │       └── statistiques.html	
+│   ├── static/			# Fichiers CSS, JS, images
+│   │   └── meteo/
+│   │       ├── css/
+│   │       │   ├── style.css
+│   │       │   └── dashboard.css
+│   │       └── js/
+│   │           └── charts.js
+│   ├── admin.py			# Configuration admin
+│   └── mqtt_client.py		# Script MQTT
+├── manage.py			# Outil de gestion Django
+├── db.sqlite3			# Base de données
+└── .env				# Variables d'environnement
 
-├── meteo\_dashboard/ # Configuration du projet
-
-│ ├── settings.py # Paramètres du projet
-
-│ ??? urls.py # Routage principal
-
-│ ??? asgi.py
-
-??? meteo/ # Application météo
-
-? ??? models.py # Modèles de données
-
-? ??? views.py # Logique métier
-
-? ??? urls.py # Routage de l'app
-
-? ??? management/ # commandes personnalisées
-
-? ? ??? commands/
-
-? ? ??? mqtt\_client.py
-
-? ??? templates/ # Templates HTML
-
-? ? ??? meteo/
-
-? ? ??? base.html
-
-? ? ??? dashboard.html
-
-? ? ??? statistiques.html
-
-? ??? static/ # Fichiers CSS, JS, images
-
-? ? ??? meteo/
-
-? ? ??? css/
-
-? ? ? ??? style.css
-
-? ? ? ??? dashboard.css
-
-? ? ??? js/
-
-? ? ??? charts.js
-
-? ??? admin.py # Configuration admin
-
-? ??? mqtt\_client.py # Script MQTT
-
-??? manage.py # Outil de gestion Django
-
-??? db.sqlite3 # Base de données
-
-??? .env # Variables d'environnement
 
 # Principes de fonctionnement de Django
 
