@@ -175,7 +175,7 @@ Si vous souhaitez arrÛter le serveur, faire un CTRL+C.
 
 Django utilise le patterná**MVT**á(Modèle-Vue-Template) :
 
-| **Composant** | **R¶le** |
+| **Composant** | **Rôle** |
 | --- | --- |
 | **Modèle (M)** | Structure des données (modèle de base de données) |
 | **Vue (V)** | Logique métier (traitement des requÛtes) |
@@ -229,7 +229,7 @@ python manage.py migrate # Appliquer les migrations
 
 # Configuration de la Base de Données
 
-Django propose une architecture bien structurée : séparation entre la logique métier (modèles), la présentation (templates) et le contr¶le (vues). Cette organisation facilite la maintenance et l'évolution de votre code.
+Django propose une architecture bien structurée : séparation entre la logique métier (modèles), la présentation (templates) et le contrôle (vues). Cette organisation facilite la maintenance et l'évolution de votre code.
 
 Le fichier de configuration ***meteo\_dashboard/settings.py***ácontient les paramètres de configuration. Vérifiez que lÆapplication créée "meteo" est indiquée dans INSTALLED\_APPS ainsi que la configuration pour la langue et le fuseau horaire. Le dossier o¨ seront stockés les fichiers statiques (feuilles de style et javascript) doit Ûtre indiqué également :
 
@@ -871,7 +871,7 @@ Topics MQTT Ó utiliser :
 * meteo/pression ? valeur en hPa
 * meteo/humidite ? valeur en %
 * Et sur votre site Djangoá:
-* ![Une image contenant texte, diagramme, capture dÆécran, Tracé  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...)![Une image contenant texte, capture dÆécran, logiciel, Ic¶ne dÆordinateur  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...)
+* ![Une image contenant texte, diagramme, capture dÆécran, Tracé  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...)![Une image contenant texte, capture dÆécran, logiciel, Icône dÆordinateur  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...)
 * ![Une image contenant texte, capture dÆécran, Police, logiciel  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...) ![Une image contenant texte, capture dÆécran, Police, nombre  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...)
 * ![Une image contenant texte, capture dÆécran, nombre  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...)
 
