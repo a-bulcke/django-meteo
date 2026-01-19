@@ -45,7 +45,7 @@ CAPTEURS_CONFIG = {
  
 class meteoMQTTClient:
     def __init__(self):
-        self.client = mqtt.Client(client_id='django_meteo')
+        self.client = mqtt.Client(client_id='django_meteo-'+str(datetime.now().isoformat(sep="-", timespec="microseconds")))
         self.client.on_connect = self.on_connect
         self.client.on_message = self.on_message
         self.client.on_disconnect = self.on_disconnect
@@ -130,4 +130,5 @@ if __name__ == '__main__':
     
     mqtt_client = meteoMQTTClient()
     mqtt_client.start()
+
 
