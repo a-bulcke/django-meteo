@@ -26,15 +26,16 @@ Installez d'abord :
 ## Installation de Django et dépendances
 
 ### Importer le projet
-
+```
 git clone https://github.com/a-bulcke/django-meteo.git
-
+```
+```
 cd django\_meteo
-
+```
 ### Créer un environnement virtuel
-'''
+```
 python -m venv env
-'''
+```
 Sous VSCode tapez : shift+Ctrl+P puis :
 
 ![Create Environment dropdown](data:image/png;base64...)
@@ -44,9 +45,9 @@ Cet environnement protège votre projet des conflits avec d'autres bibliothèque
 ### Activer l'environnement
 
 # Sur Windows :
-'''.venv\Scripts\Activate.ps1'''
+```.venv\Scripts\Activate.ps1```
 # Sur macOS/Linux :
-'''source env/bin/activate'''
+```source env/bin/activate```
 
 Avec VScode l'environnement virtuel est automatiquement sélectionné. Il suffit d'ouvrir un terminal dans le menu Affichage.
 
@@ -55,20 +56,20 @@ Vous remarquerez que le nom de l'environnement appara¯t entre parenthèses dans
 ![](data:image/png;base64...)
 
 ### Installer les dépendances
-
+```
 pip install requirements.txt
-
-Attendez que l'installation se termine, puis vérifiez que Django est correctement installé en tapantá:
-
+```
+Attendez que l'installation se termine, puis vérifiez que Django est correctement installé en tapant :
+```
 django-admin --version
-
+```
 ## Projet Django meteo\_dashboard
 
 ### Structure du projet
 
 Lorsque quÆun projet Django est généré (voir Comment créer un projet Django), une structure de dossiers complète avec tous les fichiers de configuration nécessaires est créée.
 
-Ci-dessous voici la structure du projet ***meteo\_dashboard***á:
+Ci-dessous voici la structure du projet ***meteo\_dashboard*** :
 
 meteo_dashboard/  
 ├── meteo_dashboard/		# Configuration du projet  
@@ -109,7 +110,7 @@ meteo_dashboard/
 
 ## Modèle MVT (Modèle-Vue-Template)
 
-RequÛte HTTP
+Requête HTTP
 
 Gestion des URLs
 
@@ -119,7 +120,7 @@ Gestion des vues
 
 **views.py**
 
-Templateá: gabarit de page
+Template : gabarit de page
 
 **<nom\_fichier>.html**
 
@@ -133,7 +134,7 @@ HTML
 
 ![](data:image/png;base64...)
 
-Reèoit les requÛtes et répond Ó lÆaide des templates
+Reçoit les requêtes et répond à l'aide des templates
 
 Interroge la BDD
 
@@ -148,22 +149,22 @@ Affiche les données
 # Exécution du Projet
 
 ## Créer un superutilisateur pour lÆadministration
-
+```
 python manage.py createsuperuser
-
+```
 Utilisez un nom et un mot de passe que vous nÆoublierez pas. Par exemple admin pour le login. En cas dÆoubli, vous pourrez toujours relancer la commande ci-dessus pour créer un nouveau superutilisateur avec un nom différent.
 
 ## Démarrer le serveur Django
-
+```
 python manage.py runserver
+```
+Accédez à :
 
-Accédez Ó :
+* Dashboard: <http://localhost:8000/>
+* Admin: <http://localhost:8000/admin/>
+* Statistiques: <http://localhost:8000/statistiques/>
 
-* Dashboard:á<http://localhost:8000/>
-* Admin:á<http://localhost:8000/admin/>
-* Statistiques:á<http://localhost:8000/statistiques/>
-
-Vérifiez que tout fonctionneá:
+Vérifiez que tout fonctionne :
 
 ![](data:image/png;base64...)
 
@@ -191,15 +192,15 @@ Django utilise le patterná**MVT**á(Modèle-Vue-Template) :
 
 ?
 
-3. Django appelle la vue correspondante (view)á: fichier **views.py**
+3. Django appelle la vue correspondante (view) : fichier **views.py**
 
 ?
 
-4. La vue interroge le modèle (base de données)á: fichier **models.py**
+4. La vue interroge le modèle (base de données) : fichier **models.py**
 
 ?
 
-5. La vue rend le template avec les donnéesá: fichiers **.html** du dossier **templates**
+5. La vue rend le template avec les données : fichiers **.html** du dossier **templates**
 
 ?
 
@@ -210,29 +211,30 @@ Django utilise le patterná**MVT**á(Modèle-Vue-Template) :
 L'ORM (Object Relational Mapper) permet de manipuler la base de données sans SQL :
 
 # Au lieu de :
-
+```
 # SELECT \* FROM weather\_mesure WHERE temperature > 25
-
+```
 # Vous écrivez :
-
+```
 mesures = Mesure.objects.filter(temperature\_\_gt=25)
-
-Aide en ligneá: <https://python.doctor/page-django-query-set-queryset-manager>
+```
+Aide en ligne : <https://python.doctor/page-django-query-set-queryset-manager>
 
 ## Migrations
 
 Les migrations sont la manière par laquelle Django propage des modifications que vous apportez Ó des modèles (ajout d'un champ, suppression d'un modèle, etc.) dans un schéma de base de données (fichier models.py) :
-
+```
 python manage.py makemigrations # Créer les migrations
-
+```
+```
 python manage.py migrate # Appliquer les migrations
-
+```
 # Configuration de la Base de Données
 
 Django propose une architecture bien structurée : séparation entre la logique métier (modèles), la présentation (templates) et le contrôle (vues). Cette organisation facilite la maintenance et l'évolution de votre code.
 
 Le fichier de configuration ***meteo\_dashboard/settings.py***ácontient les paramètres de configuration. Vérifiez que lÆapplication créée "meteo" est indiquée dans INSTALLED\_APPS ainsi que la configuration pour la langue et le fuseau horaire. Le dossier o¨ seront stockés les fichiers statiques (feuilles de style et javascript) doit Ûtre indiqué également :
-
+```
 INSTALLED\_APPS = [
 
 'django.contrib.admin',
@@ -280,9 +282,9 @@ LANGUAGE\_CODE = 'fr-fr'
 STATIC\_URL = '/static/'
 
 STATICFILES\_DIRS = [BASE\_DIR / 'weather' / 'static']
-
+```
 Pour sauvegarder les paramètres importants (connexion MQTT et communication sécurisée avec votre application Django par lÆintermédiaire dÆune SECRET-KEY), un fichier fichierá***.env***áest utilisé :
-
+```
 MQTT\_BROKER=localhost
 
 MQTT\_PORT=1883
@@ -292,7 +294,7 @@ MQTT\_USERNAME=user
 MQTT\_PASSWORD=password
 
 DJANGO\_SECRET\_KEY=your-secret-key-here
-
+```
 La clé DJANGO\_SECRET\_KEY est une clé de sécurité secrète utilisée par Django pour :
 
 1. **Chiffrer les données sensibles** : Sessions utilisateur, tokens CSRF, mots de passe réinitialisés, etc.
@@ -305,10 +307,10 @@ La clé DJANGO\_SECRET\_KEY est une clé de sécurité secrète utilisée par Dj
 * Elle **ne doit jamais Ûtre exposée** publiquement (GitHub, serveurs, etc.)
 * Elle doit Ûtre **unique et aléatoire**
 
-La DJANGO\_SECRET\_KEY pourra Ûtre générée pará:
-
+La DJANGO\_SECRET\_KEY pourra Ûtre générée par :
+```
 python -c 'from django.core.management.utils import get\_random\_secret\_key; print(get\_random\_secret\_key())'
-
+```
 1. Chercher Ó quoi sert un token CSRF.
 2. Créer votre SECRET\_KEY, modifier le fichier .env.
 
@@ -319,9 +321,9 @@ Utiliser MQTTExplorer par exemple pour publier des températures sur votre broke
 Vous pouvez utiliser ***test.mosquitto.org*** pour faire des tests ou le broker du lycée (***172.21.28.1***).
 
 Pour que le site Django place les températures dans la base de données, nous allons utilisez un script Python utilisant Paho-MQTT pour souscrire au topic meteo/temperature et inscrire les nouvelles mesures dans la base de données. Dans un autre terminal, lancer le script ***mqtt\_client.py*** (cf. 12.1) :
-
+```
 python manage.py mqtt\_client
-
+```
 1. Publier plusieurs températures et observer le fonctionnement du site.
 2. Comment réagit la page dÆaccueil (dashboard) ?
 3. Quelles informations sont affichées sur la page statistiques ?
@@ -337,43 +339,43 @@ Un modèle est donc une classe python qui hérite de la classe ***models.Model**
 
 ![](data:image/png;base64...)
 
-Figure 1 : BDD Ó obtenir
+Figure 1 : BDD à obtenir
 
-Ouvrir un terminal, aller dans le dossier **/meteo\_config** puis taperá:
-
+Ouvrir un terminal, aller dans le dossier **/meteo\_config** puis taper :
+```
 python manage.py shell
-
-Importer les modèlesá:
-
+```
+Importer les modèles :
+```
 >>> from meteo.models import \*
-
-Afficher tous les enregistrements de la table Mesureá:
-
+```
+Afficher tous les enregistrements de la table Mesure :
+```
 >>> Mesure.objects.all()
-
+```
 1. A quoi sert la classe modèle ? Que fait la méthode all() ?
 
-Filter les mesuresá:
-
+Filter les mesures :
+```
 >>> Mesure.objects.filter(valeur\_\_gt=20)
-
+```
 1. Que fait la méthode *filter* ? A quoi sert *\_\_gt=20* ?
 
 Aller sur la page dÆadministrationá(relancer le serveur si nécessaire) : <http://127.0.0.1:8000/admin>
 
-Créez éventuellement un superuser pour lÆaccèsá:
-
+Créez éventuellement un superuser pour l'accès :
+```
 python manage.py createsuperuser
+```
+Afficher la page des mesures : <http://127.0.0.1:8000/admin/weather/mesure/>
 
-Afficher la page des mesuresá: <http://127.0.0.1:8000/admin/weather/mesure/>
+Ajouter une mesure inférieure à 0°C
 
-Ajouter une mesure inférieure Ó 0░C
-
-1. Ecrire la requÛte permettant dÆafficher les valeurs des mesures inférieures Ó 0░C. Vérifier que votre mesure est visible.
-
+1. Ecrire la requête permettant dÆafficher les valeurs des mesures inférieures Ó 0░C. Vérifier que votre mesure est visible.
+```
 >>> quit()
-
-Ouvrirá***meteo/models.py***. Il y a une classe par table de la BDDá:
+```
+Ouvrirá***meteo/models.py***. Il y a une classe par table de la BDD :
 
 from django.db import models
 
@@ -611,7 +613,7 @@ Afficher <http://127.0.0.1:8000/statistiques>
 
 # Routage (URLs)
 
-Ouvrir le fichier ***meteo/urls.py***á:
+Ouvrir le fichier ***meteo/urls.py*** :
 
 from django.urls import path
 
@@ -648,7 +650,7 @@ path('', include('meteo.urls')),
 
 # Templates
 
-Les templates permettent la présentation visuelle de votre siteá:
+Les templates permettent la présentation visuelle de votre site :
 
 * fichier qui contient des variables et des tags, et qui sert Ó générer le document final.
 * on peut l'utiliser pour générer du html, du csv ou n'importe quel autre fichier basé sur du texte.
@@ -722,7 +724,7 @@ Commenter la ligne {% block extra\_css %}{% endblock %}
 
 ## dashboard.html
 
-Ouvrirá***meteo/templates/meteo/dashboard.html***á:
+Ouvrirá***meteo/templates/meteo/dashboard.html*** :
 
 {% extends 'meteo/base.html' %}
 
@@ -793,7 +795,7 @@ Mise Ó jour: {{ mesures\_actuelles.temperature.date|date:"H:i:s" }}
 
 # Configuration Admin Django
 
-Ouvrirá***meteo/admin.py***á:
+Ouvrirá***meteo/admin.py*** :
 
 from django.contrib import admin
 
@@ -870,7 +872,7 @@ Topics MQTT Ó utiliser :
 
 * meteo/pression ? valeur en hPa
 * meteo/humidite ? valeur en %
-* Et sur votre site Djangoá:
+* Et sur votre site Django :
 * ![Une image contenant texte, diagramme, capture dÆécran, Tracé  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...)![Une image contenant texte, capture dÆécran, logiciel, Icône dÆordinateur  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...)
 * ![Une image contenant texte, capture dÆécran, Police, logiciel  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...) ![Une image contenant texte, capture dÆécran, Police, nombre  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...)
 * ![Une image contenant texte, capture dÆécran, nombre  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...)
@@ -961,9 +963,9 @@ Pour un accès localhost uniquement :
 
 python manage.py runserver
 
-Pour un accès sur le réseau local (port 8000)á:
+Pour un accès sur le réseau local (port 8000) :
 
-python manage.py runserver 192.168.1.1á:8000
+python manage.py runserver 192.168.1.1 :8000
 
 Il faut alors ajouter lÆip dans les ALLOWED\_HOSTS du fichier ***nom\_du\_projet/settings.py*** :
 
