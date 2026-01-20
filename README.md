@@ -48,7 +48,7 @@ Cet environnement protège votre projet des conflits avec d'autres bibliothèque
 # Sur macOS/Linux :
 source env/bin/activate
 
-Avec VScode lÆenvironnement virtuel est automatiquement sélectionné. Il suffit dÆouvrir un terminal dans le menu Affichage.
+Avec VScode l'environnement virtuel est automatiquement sélectionné. Il suffit d'ouvrir un terminal dans le menu Affichage.
 
 Vous remarquerez que le nom de l'environnement appara¯t entre parenthèses dans votre terminal.
 
@@ -70,7 +70,7 @@ Lorsque quÆun projet Django est généré (voir Comment créer un projet Django
 
 Ci-dessous voici la structure du projet ***meteo\_dashboard***á:
 
-meteo_dashboard/
+meteo_dashboard/  
 ├── meteo_dashboard/		# Configuration du projet  
 │   ├── settings.py			# Paramètres du projet  
 │   ├── urls.py			# Routage principal  
