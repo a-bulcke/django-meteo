@@ -285,15 +285,15 @@ STATICFILES\_DIRS = [BASE\_DIR / 'weather' / 'static']
 ```
 Pour sauvegarder les paramètres importants (connexion MQTT et communication sécurisée avec votre application Django par lÆintermédiaire dÆune SECRET-KEY), un fichier fichierá***.env***áest utilisé :
 ```
-MQTT\_BROKER=localhost
+MQTT_BROKER=localhost
 
-MQTT\_PORT=1883
+MQTT_PORT=1883
 
-MQTT\_USERNAME=user
+MQTT_USERNAME=user
 
-MQTT\_PASSWORD=password
+MQTT_PASSWORD=password
 
-DJANGO\_SECRET\_KEY=your-secret-key-here
+DJANGO_SECRET\_KEY=your-secret-key-here
 ```
 La clé DJANGO\_SECRET\_KEY est une clé de sécurité secrète utilisée par Django pour :
 
@@ -376,7 +376,7 @@ Ajouter une mesure inférieure à 0°C
 >>> quit()
 ```
 Ouvrirá***meteo/models.py***. Il y a une classe par table de la BDD :
-
+```
 from django.db import models
 
 class Capteur(models.Model):
@@ -434,21 +434,22 @@ verbose\_name = "Mesure"
 verbose\_name\_plural = "Mesures"
 
 ordering = ['-date\_mesure']
-
+```
 1. Ajouter le champ ***localisation*** qui contiendra le texte du lieux du capteur (type CharField de 200 caractères maxi) dans la table Capteur
 2. Ajouter le champ ***actif*** (type booléen, vrai par défaut)
 3. Dans la table Mesure, ajouter le champ ***unites*** de type texte (longueur max 20 caractères) et qui contiendra uniquement le choix possible pour le capteur de température : æCÆ pour æ░CÆ.
 
 Si une modification de models.py est faite, il faut appliquez les migrations (cf. 5.3) :
-
-python manage.py makemigrations
-
-python manage.py migrate
-
+```
+python manage.py makemigrations meteo
+```
+```
+python manage.py migrate meteo
+```
 # Vues Django
 
 Dans Django, une vue représente la logique qui traite les requÛtes des utilisateurs et retourne des réponses. Ouvrirá***meteo/views.py***áde votre application :
-
+```
 from django.shortcuts import render
 
 from django.http import JsonResponse
@@ -596,7 +597,7 @@ for m in mesures
 ]
 
 return JsonResponse({'donnees': donnees})
-
+```
 Afficher <http://127.0.0.1:8000/>
 
 Dans la vue ***dashboard*** (***def dashboard(request):*** ci-dessus), il faut afficher les dernières mesures.
@@ -614,7 +615,7 @@ Afficher <http://127.0.0.1:8000/statistiques>
 # Routage (URLs)
 
 Ouvrir le fichier ***meteo/urls.py*** :
-
+```
 from django.urls import path
 
 from . import views
@@ -644,7 +645,7 @@ path('admin/', admin.site.urls),
 path('', include('meteo.urls')),
 
 ]
-
+```
 1. Quelle ligne permet de définir la page dÆadministration ?
 2. Changer pour accéder Ó lÆinterface dÆadministration par lÆurl <http://127.0.0.1:8000/administration>
 
@@ -660,7 +661,7 @@ Les templates permettent la présentation visuelle de votre site :
 ## base.html
 
 Ouvrir le fichier ***meteo/templates/meteo/base.html***
-
+```
 {% load static %}
 
 <!DOCTYPE html>
@@ -708,7 +709,7 @@ Ouvrir le fichier ***meteo/templates/meteo/base.html***
 </body>
 
 </html>
-
+```
 La page ***base.html*** sert de base aux pages ***dashboard.html*** et ***statistiques.html***. Les blocs ***extra\_css*** (délimité par le tag {% block extra\_css %}{% endblock %}), ***content*** et ***extra\_js*** sont donc implémentés dans ***base.html*** mais seront définis différemment dans les pages dashboard.html et statistiques.html.
 
 1. Changer le texte de la balise ***navbar-brand*** (vous pouvez utiliser <https://www.w3schools.com/charsets/ref_emoji_weather.asp> pour trouver dÆautres icones)
@@ -720,12 +721,12 @@ Commenter les lignes {% load static %} et <link rel="stylesheet" href="{% static
 
 Commenter la ligne {% block extra\_css %}{% endblock %}
 
-1. O¨ se trouve la feuille de style concernée ?
+1. Où se trouve la feuille de style concernée ?
 
 ## dashboard.html
 
 Ouvrirá***meteo/templates/meteo/dashboard.html*** :
-
+```
 {% extends 'meteo/base.html' %}
 
 {% load static %}
@@ -789,14 +790,14 @@ Mise Ó jour: {{ mesures\_actuelles.temperature.date|date:"H:i:s" }}
 </div>
 
 {% endblock %}
-
+```
 1. Que signifie le tag {% if mesures\_actuelles.temperature %}
 2. Dans quel fichier cette variable a-t-elle été définie ?
 
 # Configuration Admin Django
 
-Ouvrirá***meteo/admin.py*** :
-
+Ouvrir ***meteo/admin.py*** :
+```
 from django.contrib import admin
 
 from .models import Capteur, Mesure
@@ -826,13 +827,13 @@ search\_fields = ('capteur\_\_nom',)
 readonly\_fields = ('date\_mesure',)
 
 date\_hierarchy = 'date\_mesure'
-
+```
 1. Modifier admin.py pour prendre en compte lÆaffichage des champs ajoutés précédemment dans models.py
 
 ## Démarrer le client MQTT
 
 Afin de lancer le script Python mqtt\_client.py situé dans le dossier **meteo** il faut utiliser une commande Django. Ce programme est placé dans le dossier ***meteo/management/commands/*** et se nomme ***mqtt\_client.py*** :
-
+```
 from django.core.management.base import BaseCommand
 
 from meteo.mqtt\_client import meteoMQTTClient
@@ -846,11 +847,11 @@ def handle(self, \*args, \*\*options):
 client = meteoMQTTClient()
 
 client.start()
-
+```
 Pour le lancer, utilisez le nom du fichier :
-
-python manage.py mqtt\_client
-
+```
+python manage.py mqtt_client
+```
 # Test avec MQTTExplorer
 
 ## Publier des données de test
@@ -868,10 +869,10 @@ python manage.py mqtt\_client
    6. ***charts.js*** : Ajouter les appels createChart pour les deux nouveaux graphiques
    7. ***mqtt\_client.py*** : Ajouter les configurations pour les topics MQTT (décommenter la ligne pour prendre en compte lÆunité de la temperature)
 
-Topics MQTT Ó utiliser :
+Topics MQTT à utiliser :
 
-* meteo/pression ? valeur en hPa
-* meteo/humidite ? valeur en %
+* meteo/pression : valeur en hPa
+* meteo/humidite : valeur en %
 * Et sur votre site Django :
 * ![Une image contenant texte, diagramme, capture dÆécran, Tracé  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...)![Une image contenant texte, capture dÆécran, logiciel, Icône dÆordinateur  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...)
 * ![Une image contenant texte, capture dÆécran, Police, logiciel  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...) ![Une image contenant texte, capture dÆécran, Police, nombre  Le contenu généré par lÆIA peut Ûtre incorrect.](data:image/png;base64...)
@@ -880,19 +881,18 @@ Topics MQTT Ó utiliser :
 # Comment créer un projet Django
 
 ## Créer le projet
-
+```
 django-admin startproject nom\_du\_projet
-
 cd nom\_du\_projet
-
+```
 ## Créer l'application
-
+```
 python manage.py startapp nom\_de\_l\_apllication
-
+```
 ## Configurer lÆapplication
 
 Modifiez le fichier ***nom\_du\_projet/settings.py*** pour, au minimum, ajouter le nom de lÆapplication (cf. 6) :
-
+```
 INSTALLED\_APPS = [
 
 'django.contrib.admin',
@@ -910,19 +910,19 @@ INSTALLED\_APPS = [
 **'nom\_de\_l\_application',**
 
 ]
-
+```
 ## Appliquer la migration
-
+```
 python manage.py migrate
-
+```
 Si le fichier ***nom\_du\_projet/nom\_de\_l\_application/models.py*** est modifié pour utiliser une BDD, il faut en avant :
-
+```
 python manage.py makemigrations
-
+```
 ## Définir les vues
 
 Créer un fichier ***nom\_du\_projet/nom\_de\_l\_application/urls.py*** pour définir les routes possibles, par exemple :
-
+```
 from django.urls import path
 
 from . import views
@@ -950,23 +950,24 @@ path('admin/', admin.site.urls),
 **path('', include('nom\_de\_l\_application.urls')),**
 
 ]
-
+```
 ## Super utilisateur
 
-Pensez Ó créer un super utilisateur pour la partie admin :
-
+Pensez à créer un super utilisateur pour la partie admin :
+```
 python manage.py createsuperuser
-
+```
 ## Lancer le serveur
 
 Pour un accès localhost uniquement :
-
+```
 python manage.py runserver
-
+```
 Pour un accès sur le réseau local (port 8000) :
-
+```
 python manage.py runserver 192.168.1.1 :8000
-
+```
 Il faut alors ajouter lÆip dans les ALLOWED\_HOSTS du fichier ***nom\_du\_projet/settings.py*** :
-
+```
 ALLOWED\_HOSTS = ['192.168.1.1', 'localhost']
+```
