@@ -210,11 +210,11 @@ Django utilise le pattern **MVT** (Modèle-Vue-Template) :
 
 L'ORM (Object Relational Mapper) permet de manipuler la base de données sans SQL :
 
-# Au lieu de :
+Au lieu de :
 ```
 # SELECT * FROM weather_mesure WHERE temperature > 25
 ```
-# Vous écrivez :
+Vous écrivez :
 ```
 mesures = Mesure.objects.filter(temperature__gt=25)
 ```
@@ -224,10 +224,10 @@ Aide en ligne : <https://python.doctor/page-django-query-set-queryset-manager>
 
 Les migrations sont la manière par laquelle Django propage des modifications que vous apportez à des modèles (ajout d'un champ, suppression d'un modèle, etc.) dans un schéma de base de données (fichier models.py) :
 ```
-python manage.py makemigrations # Créer les migrations
+python manage.py makemigrations nom_de_l_application # Créer les migrations
 ```
 ```
-python manage.py migrate # Appliquer les migrations
+python manage.py migrate nom_de_l_application # Appliquer les migrations
 ```
 # Configuration de la Base de Données
 
