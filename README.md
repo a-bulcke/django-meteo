@@ -6,7 +6,7 @@ Django est un Framework Python, open-source et gratuit qui permet de créer un s
 
 ## Objectifs de l'activité
 
-└ la fin de cette activité, vous serez capable de :
+A la fin de cette activité, vous serez capable de :
 
 * Installer et configurer Django
 * Comprendre l'architecture MVT de Django
@@ -35,7 +35,7 @@ cd django\_meteo
 
 python -m venv env
 
-Sous VSCode tapezáshift+Ctrl+P puisá:
+Sous VSCode tapez : shift+Ctrl+P puis :
 
 ![Create Environment dropdown](data:image/png;base64...)
 
@@ -71,34 +71,34 @@ Lorsque quÆun projet Django est généré (voir Comment créer un projet Django
 Ci-dessous voici la structure du projet ***meteo\_dashboard***á:
 
 meteo_dashboard/
-├── meteo_dashboard/		# Configuration du projet
-│   ├── settings.py			# Paramètres du projet
-│   ├── urls.py			# Routage principal
-│   └── asgi.py
-├── meteo/			# Application météo
-│   ├── models.py			# Modèles de données
-│   ├── views.py			# Logique métier
-│   ├── urls.py			# Routage de l'app
-│   ├── management/			# commandes personnalisées
-│   │   └── commands/
-│   │       ├── mqtt_client.py
-│   ├── templates/			# Templates HTML
-│   │   └── meteo/
-│   │       ├── base.html
-│   │       ├── dashboard.html
-│   │       └── statistiques.html	
-│   ├── static/			# Fichiers CSS, JS, images
-│   │   └── meteo/
-│   │       ├── css/
-│   │       │   ├── style.css
-│   │       │   └── dashboard.css
-│   │       └── js/
-│   │           └── charts.js
-│   ├── admin.py			# Configuration admin
-│   └── mqtt_client.py		# Script MQTT
-├── manage.py			# Outil de gestion Django
-├── db.sqlite3			# Base de données
-└── .env				# Variables d'environnement
+├── meteo_dashboard/		# Configuration du projet  
+│   ├── settings.py			# Paramètres du projet  
+│   ├── urls.py			# Routage principal  
+│   └── asgi.py  
+├── meteo/			# Application météo  
+│   ├── models.py			# Modèles de données  
+│   ├── views.py			# Logique métier  
+│   ├── urls.py			# Routage de l'app  
+│   ├── management/			# commandes personnalisées  
+│   │   └── commands/  
+│   │       ├── mqtt_client.py  
+│   ├── templates/			# Templates HTML  
+│   │   └── meteo/  
+│   │       ├── base.html  
+│   │       ├── dashboard.html  
+│   │       └── statistiques.html  
+│   ├── static/			# Fichiers CSS, JS, images  
+│   │   └── meteo/  
+│   │       ├── css/  
+│   │       │   ├── style.css  
+│   │       │   └── dashboard.css  
+│   │       └── js/  
+│   │           └── charts.js  
+│   ├── admin.py			# Configuration admin  
+│   └── mqtt_client.py		# Script MQTT  
+├── manage.py			# Outil de gestion Django  
+├── db.sqlite3			# Base de données  
+└── .env				# Variables d'environnement  
 
 
 # Principes de fonctionnement de Django
