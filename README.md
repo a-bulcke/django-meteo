@@ -51,7 +51,7 @@ Cet environnement protège votre projet des conflits avec d'autres bibliothèque
 
 Avec VScode l'environnement virtuel est automatiquement sélectionné. Il suffit d'ouvrir un terminal dans le menu Affichage.
 
-Vous remarquerez que le nom de l'environnement appara¯t entre parenthèses dans votre terminal.
+Vous remarquerez que le nom de l'environnement apparait entre parenthèses dans votre terminal.
 
 ![](/images/Image2.png)
 
@@ -67,7 +67,7 @@ django-admin --version
 
 ### Structure du projet
 
-Lorsque quÆun projet Django est généré (voir Comment créer un projet Django), une structure de dossiers complète avec tous les fichiers de configuration nécessaires est créée.
+Lorsque qu'un projet Django est généré (voir Comment créer un projet Django), une structure de dossiers complète avec tous les fichiers de configuration nécessaires est créée.
 
 Ci-dessous voici la structure du projet ***meteo_dashboard*** :
 
@@ -148,11 +148,11 @@ Affiche les données
 
 # Exécution du Projet
 
-## Créer un superutilisateur pour lÆadministration
+## Créer un superutilisateur pour l'administration
 ```
 python manage.py createsuperuser
 ```
-Utilisez un nom et un mot de passe que vous nÆoublierez pas. Par exemple admin pour le login. En cas dÆoubli, vous pourrez toujours relancer la commande ci-dessus pour créer un nouveau superutilisateur avec un nom différent.
+Utilisez un nom et un mot de passe que vous n'oublierez pas. Par exemple admin pour le login. En cas d'oubli, vous pourrez toujours relancer la commande ci-dessus pour créer un nouveau superutilisateur avec un nom différent.
 
 ## Démarrer le serveur Django
 ```
@@ -174,7 +174,7 @@ Si vous souhaitez arrêter le serveur, faire un CTRL+C.
 
 ## Architecture MVT
 
-Django utilise le patterná**MVT**á(Modèle-Vue-Template) :
+Django utilise le pattern **MVT** (Modèle-Vue-Template) :
 
 | **Composant** | **Rôle** |
 | --- | --- |
@@ -184,7 +184,7 @@ Django utilise le patterná**MVT**á(Modèle-Vue-Template) :
 
 ### Flux de requête HTTP :
 
-1. Utilisateur accède Ó une URL (ex: /statistiques/)
+1. Utilisateur accède à une URL (ex: /statistiques/)
 
 ↓
 
@@ -222,7 +222,7 @@ Aide en ligne : <https://python.doctor/page-django-query-set-queryset-manager>
 
 ## Migrations
 
-Les migrations sont la manière par laquelle Django propage des modifications que vous apportez Ó des modèles (ajout d'un champ, suppression d'un modèle, etc.) dans un schéma de base de données (fichier models.py) :
+Les migrations sont la manière par laquelle Django propage des modifications que vous apportez à des modèles (ajout d'un champ, suppression d'un modèle, etc.) dans un schéma de base de données (fichier models.py) :
 ```
 python manage.py makemigrations # Créer les migrations
 ```
@@ -233,7 +233,7 @@ python manage.py migrate # Appliquer les migrations
 
 Django propose une architecture bien structurée : séparation entre la logique métier (modèles), la présentation (templates) et le contrôle (vues). Cette organisation facilite la maintenance et l'évolution de votre code.
 
-Le fichier de configuration ***meteo_dashboard/settings.py***ácontient les paramètres de configuration. Vérifiez que lÆapplication créée "meteo" est indiquée dans INSTALLED_APPS ainsi que la configuration pour la langue et le fuseau horaire. Le dossier o¨ seront stockés les fichiers statiques (feuilles de style et javascript) doit être indiqué également :
+Le fichier de configuration ***meteo_dashboard/settings.py*** contient les paramètres de configuration. Vérifiez que l'application créée "meteo" est indiquée dans INSTALLED_APPS ainsi que la configuration pour la langue et le fuseau horaire. Le dossier o¨ seront stockés les fichiers statiques (feuilles de style et javascript) doit être indiqué également :
 ```
 INSTALLED_APPS = [
 'django.contrib.admin',
@@ -261,7 +261,7 @@ LANGUAGE_CODE = 'fr-fr'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'weather' / 'static']
 ```
-Pour sauvegarder les paramètres importants (connexion MQTT et communication sécurisée avec votre application Django par lÆintermédiaire dÆune SECRET-KEY), un fichier fichier ***.env*** est utilisé :
+Pour sauvegarder les paramètres importants (connexion MQTT et communication sécurisée avec votre application Django par l'intermédiaire d'une SECRET-KEY), un fichier fichier ***.env*** est utilisé :
 ```
 MQTT_BROKER=localhost
 MQTT_PORT=1883
@@ -285,7 +285,7 @@ La DJANGO_SECRET_KEY pourra être générée par :
 ```
 python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 ```
-1. Chercher Ó quoi sert un token CSRF.
+1. Chercher à quoi sert un token CSRF.
 2. Créer votre SECRET_KEY, modifier le fichier .env.
 
 # Publication des températures
@@ -299,11 +299,11 @@ Pour que le site Django place les températures dans la base de données, nous a
 python manage.py mqtt_client
 ```
 1. Publier plusieurs températures et observer le fonctionnement du site.
-2. Comment réagit la page dÆaccueil (dashboard) ?
+2. Comment réagit la page d'accueil (dashboard) ?
 3. Quelles informations sont affichées sur la page statistiques ?
-4. Quelles informations sont visibles sur la page dÆadministration ?
+4. Quelles informations sont visibles sur la page d'administration ?
 
-![Une image contenant texte, capture dÆécran, Tracé, ligne  Le contenu généré par lÆIA peut être incorrect.](/images/Image8.png)
+![](/images/Image8.png)
 
 # Modèles de Données
 
@@ -335,7 +335,7 @@ Filter les mesures :
 ```
 1. Que fait la méthode *filter* ? A quoi sert *__gt=20* ?
 
-Aller sur la page dÆadministrationá(relancer le serveur si nécessaire) : <http://127.0.0.1:8000/admin>
+Aller sur la page d'administrationá(relancer le serveur si nécessaire) : <http://127.0.0.1:8000/admin>
 
 Créez éventuellement un superuser pour l'accès :
 ```
@@ -345,11 +345,11 @@ Afficher la page des mesures : <http://127.0.0.1:8000/admin/weather/mesure/>
 
 Ajouter une mesure inférieure à 0°C
 
-1. Ecrire la requête permettant dÆafficher les valeurs des mesures inférieures Ó 0░C. Vérifier que votre mesure est visible.
+1. Ecrire la requête permettant d'afficher les valeurs des mesures inférieures à 0°C. Vérifier que votre mesure est visible.
 ```
 >>> quit()
 ```
-Ouvrirá***meteo/models.py***. Il y a une classe par table de la BDD :
+Ouvrir ***meteo/models.py***. Il y a une classe par table de la BDD :
 ```
 from django.db import models
 class Capteur(models.Model):
@@ -478,13 +478,13 @@ Afficher <http://127.0.0.1:8000/>
 Dans la vue ***dashboard*** (***def dashboard(request):*** ci-dessus), il faut afficher les dernières mesures.
 
 1. Changer la requête pour obtenir la dernière mesure.
-2. Ajouter la gestion de lÆunité.
+2. Ajouter la gestion de l'unité.
 
 Dans la vue ***statistiques***, il faut afficher, en plus des valeurs min et max, la valeur moyenne et le nombre de mesure.
 
 Afficher <http://127.0.0.1:8000/statistiques>
 
-1. Ajouter lÆaffichage de la valeur moyenne.
+1. Ajouter l'affichage de la valeur moyenne.
 2. Modifiez la variable capteurs pour prendre en compte que les capteurs actifs.
 
 # Routage (URLs)
@@ -510,17 +510,17 @@ path('admin/', admin.site.urls),
 path('', include('meteo.urls')),
 ]
 ```
-1. Quelle ligne permet de définir la page dÆadministration ?
-2. Changer pour accéder Ó lÆinterface dÆadministration par lÆurl <http://127.0.0.1:8000/administration>
+1. Quelle ligne permet de définir la page d'administration ?
+2. Changer pour accéder à l'interface d'administration par l'url <http://127.0.0.1:8000/administration>
 
 # Templates
 
 Les templates permettent la présentation visuelle de votre site :
 
-* fichier qui contient des variables et des tags, et qui sert Ó générer le document final.
+* fichier qui contient des variables et des tags, et qui sert à générer le document final.
 * on peut l'utiliser pour générer du html, du csv ou n'importe quel autre fichier basé sur du texte.
 * les variables sont évaluées par {{myVar}}.
-* les tags sont Ó un format du type {% myTag ... %}.
+* les tags sont à un format du type {% myTag ... %}.
 
 ## base.html
 
@@ -553,7 +553,7 @@ Ouvrir le fichier ***meteo/templates/meteo/base.html***
 ```
 La page ***base.html*** sert de base aux pages ***dashboard.html*** et ***statistiques.html***. Les blocs ***extra_css*** (délimité par le tag {% block extra_css %}{% endblock %}), ***content*** et ***extra_js*** sont donc implémentés dans ***base.html*** mais seront définis différemment dans les pages dashboard.html et statistiques.html.
 
-1. Changer le texte de la balise ***navbar-brand*** (vous pouvez utiliser <https://www.w3schools.com/charsets/ref_emoji_weather.asp> pour trouver dÆautres icones)
+1. Changer le texte de la balise ***navbar-brand*** (vous pouvez utiliser <https://www.w3schools.com/charsets/ref_emoji_weather.asp> pour trouver d'autres icones)
 
 Commenter les lignes {% load static %} et <link rel="stylesheet" href="{% static 'meteo/css/style.css' %}"> (en mettant entre balises <!-- -->)
 
@@ -583,7 +583,7 @@ Ouvrir ***meteo/templates/meteo/dashboard.html*** :
 <div class="metric-icon">??</div>
 <div class="metric-label">Température</div>
 <div class="metric-value">
-{{ mesures_actuelles.temperature.valeur|floatformat:1 }}░C
+{{ mesures_actuelles.temperature.valeur|floatformat:1 }}°C
 </div>
 <small class="metric-date">
 Mise à jour: {{ mesures_actuelles.temperature.date|date:"H:i:s" }}
@@ -624,7 +624,7 @@ search_fields = ('capteur__nom',)
 readonly_fields = ('date_mesure',)
 date_hierarchy = 'date_mesure'
 ```
-1. Modifier admin.py pour prendre en compte lÆaffichage des champs ajoutés précédemment dans models.py
+1. Modifier admin.py pour prendre en compte l'affichage des champs ajoutés précédemment dans models.py
 
 ## Démarrer le client MQTT
 
@@ -646,18 +646,18 @@ python manage.py mqtt_client
 
 ## Publier des données de test
 
-![Une image contenant texte, capture dÆécran, Police, nombre  Le contenu généré par lÆIA peut être incorrect.](/images/Image99.png)Vous devez obtenirádans VSCODE : ![](/images/Image10.png)
+![](/images/Image99.png)Vous devez obtenirádans VSCODE : ![](/images/Image10.png)
 
 # EXERCICES : Ajouter la Pression et l'Humidité
 
 1. Modifiez les fichiers suivants pour ajouter support pour la pression et l'humidité :
-   1. ***models.py*** : Ajouter 'pression' et æhumidite' aux choix du type_capteur et unite
+   1. ***models.py*** : Ajouter 'pression' et 'humidite' aux choix du type_capteur et unite
    2. ***views.py*** : Ajouter le traitement pour pression et humidité (remplacer les TODO)
    3. ***urls.py*** : Ajouter les routes si nécessaire
    4. ***dashboard.html*** : Ajouter les cartes pour pression et humidité
    5. ***dashboard.css*** : Adapter le CSS si nécessaire
    6. ***charts.js*** : Ajouter les appels createChart pour les deux nouveaux graphiques
-   7. ***mqtt_client.py*** : Ajouter les configurations pour les topics MQTT (décommenter la ligne pour prendre en compte lÆunité de la temperature)
+   7. ***mqtt_client.py*** : Ajouter les configurations pour les topics MQTT (décommenter la ligne pour prendre en compte l'unité de la temperature)
 
 Topics MQTT à utiliser :
 
@@ -679,9 +679,9 @@ cd nom_du_projet
 ```
 python manage.py startapp nom_de_l_apllication
 ```
-## Configurer lÆapplication
+## Configurer l'application
 
-Modifiez le fichier ***nom_du_projet/settings.py*** pour, au minimum, ajouter le nom de lÆapplication (cf. 6) :
+Modifiez le fichier ***nom_du_projet/settings.py*** pour, au minimum, ajouter le nom de l'application (cf. 6) :
 ```
 INSTALLED_APPS = [
 
@@ -714,31 +714,20 @@ python manage.py makemigrations
 Créer un fichier ***nom_du_projet/nom_de_l_application/urls.py*** pour définir les routes possibles, par exemple :
 ```
 from django.urls import path
-
 from . import views
-
 urlpatterns = [
-
 path('', views.racine, name='racine'),
-
 path('api/', views.api_json, name='api_json'),
-
 path('autres_pages/', views.autres, name='autres'),
-
 ]
-
-Modifiezá***nom_du_projet/urls.py***áqui permettra de prendre en compte ce fichier :
-
+```
+Modifiez ***nom_du_projet/urls.py*** qui permettra de prendre en compte ce fichier :
+```
 from django.contrib import admin
-
 from django.urls import path**, include**
-
 urlpatterns = [
-
 path('admin/', admin.site.urls),
-
 **path('', include('nom_de_l_application.urls')),**
-
 ]
 ```
 ## Super utilisateur
