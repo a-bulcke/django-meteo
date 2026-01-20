@@ -32,9 +32,9 @@ git clone https://github.com/a-bulcke/django-meteo.git
 cd django\_meteo
 
 ### Créer un environnement virtuel
-
+'''
 python -m venv env
-
+'''
 Sous VSCode tapez : shift+Ctrl+P puis :
 
 ![Create Environment dropdown](data:image/png;base64...)
@@ -44,9 +44,9 @@ Cet environnement protège votre projet des conflits avec d'autres bibliothèque
 ### Activer l'environnement
 
 # Sur Windows :
-.venv\Scripts\Activate.ps1
+'''.venv\Scripts\Activate.ps1'''
 # Sur macOS/Linux :
-source env/bin/activate
+'''source env/bin/activate'''
 
 Avec VScode l'environnement virtuel est automatiquement sélectionné. Il suffit d'ouvrir un terminal dans le menu Affichage.
 
