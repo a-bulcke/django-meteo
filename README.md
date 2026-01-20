@@ -38,7 +38,7 @@ python -m venv env
 ```
 Sous VSCode tapez : shift+Ctrl+P puis :
 
-![Create Environment dropdown](data:image/png;base64...)
+![Create Environment dropdown](/images/Image1.png)
 
 Cet environnement protège votre projet des conflits avec d'autres bibliothèques Python.
 
@@ -53,7 +53,7 @@ Avec VScode l'environnement virtuel est automatiquement sélectionné. Il suffit
 
 Vous remarquerez que le nom de l'environnement appara¯t entre parenthèses dans votre terminal.
 
-![](data:image/png;base64...)
+![](/images/Image2.png)
 
 ### Installer les dépendances
 ```
@@ -106,7 +106,7 @@ meteo_dashboard/
 
 ## Ecosystème Django
 
-![Projet et application Django](data:image/png;base64...)
+![Projet et application Django](/images/Image3.png)
 
 ## Modèle MVT (Modèle-Vue-Template)
 
@@ -132,7 +132,7 @@ Réponse http
 
 HTML
 
-![](data:image/png;base64...)
+![](/images/Image4.png)
 
 Reçoit les requêtes et répond à l'aide des templates
 
@@ -140,11 +140,11 @@ Interroge la BDD
 
 Gère les urls et interroge la vue correspondante
 
-![](data:image/png;base64...)
+![](/images/Image5.png)
 
 Affiche les données
 
-![](data:image/png;base64...)
+![](/images/Image6.png)
 
 # Exécution du Projet
 
@@ -166,7 +166,7 @@ Accédez à :
 
 Vérifiez que tout fonctionne :
 
-![](data:image/png;base64...)
+![](/images/Image7.png)
 
 Si vous souhaitez arrêter le serveur, faire un CTRL+C.
 
@@ -261,16 +261,12 @@ LANGUAGE_CODE = 'fr-fr'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'weather' / 'static']
 ```
-Pour sauvegarder les paramètres importants (connexion MQTT et communication sécurisée avec votre application Django par lÆintermédiaire dÆune SECRET-KEY), un fichier fichierá***.env***áest utilisé :
+Pour sauvegarder les paramètres importants (connexion MQTT et communication sécurisée avec votre application Django par lÆintermédiaire dÆune SECRET-KEY), un fichier fichier ***.env*** est utilisé :
 ```
 MQTT_BROKER=localhost
-
 MQTT_PORT=1883
-
 MQTT_USERNAME=user
-
 MQTT_PASSWORD=password
-
 DJANGO_SECRET_KEY=your-secret-key-here
 ```
 La clé DJANGO_SECRET_KEY est une clé de sécurité secrète utilisée par Django pour :
@@ -307,7 +303,7 @@ python manage.py mqtt_client
 3. Quelles informations sont affichées sur la page statistiques ?
 4. Quelles informations sont visibles sur la page dÆadministration ?
 
-![Une image contenant texte, capture dÆécran, Tracé, ligne  Le contenu généré par lÆIA peut être incorrect.](data:image/png;base64...)
+![Une image contenant texte, capture dÆécran, Tracé, ligne  Le contenu généré par lÆIA peut être incorrect.](/images/Image8.png)
 
 # Modèles de Données
 
@@ -315,7 +311,7 @@ Pour traduire cette architecture de base de données en code Django, nous défin
 
 Un modèle est donc une classe python qui hérite de la classe ***models.Model***. Les champs sont définis dans la classe, on leur donne un nom et un type.
 
-![](data:image/png;base64...)
+![](/images/Image9.png)
 
 Figure 1 : BDD à obtenir
 
@@ -387,7 +383,7 @@ ordering = ['-date_mesure']
 ```
 1. Ajouter le champ ***localisation*** qui contiendra le texte du lieux du capteur (type CharField de 200 caractères maxi) dans la table Capteur
 2. Ajouter le champ ***actif*** (type booléen, vrai par défaut)
-3. Dans la table Mesure, ajouter le champ ***unites*** de type texte (longueur max 20 caractères) et qui contiendra uniquement le choix possible pour le capteur de température : æCÆ pour æ░CÆ.
+3. Dans la table Mesure, ajouter le champ ***unites*** de type texte (longueur max 20 caractères) et qui contiendra uniquement le choix possible pour le capteur de température : 'C' pour '°C'.
 
 Si une modification de models.py est faite, il faut appliquez les migrations (cf. 5.3) :
 ```
@@ -398,7 +394,7 @@ python manage.py migrate meteo
 ```
 # Vues Django
 
-Dans Django, une vue représente la logique qui traite les requêtes des utilisateurs et retourne des réponses. Ouvrirá***meteo/views.py***áde votre application :
+Dans Django, une vue représente la logique qui traite les requêtes des utilisateurs et retourne des réponses. Ouvrir ***meteo/views.py*** de votre application :
 ```
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -650,7 +646,7 @@ python manage.py mqtt_client
 
 ## Publier des données de test
 
-![Une image contenant texte, capture dÆécran, Police, nombre  Le contenu généré par lÆIA peut être incorrect.](data:image/png;base64...)Vous devez obtenirádans VSCODE : ![](data:image/png;base64...)
+![Une image contenant texte, capture dÆécran, Police, nombre  Le contenu généré par lÆIA peut être incorrect.](/images/Image99.png)Vous devez obtenirádans VSCODE : ![](/images/Image10.png)
 
 # EXERCICES : Ajouter la Pression et l'Humidité
 
@@ -668,9 +664,9 @@ Topics MQTT à utiliser :
 * meteo/pression : valeur en hPa
 * meteo/humidite : valeur en %
 * Et sur votre site Django :
-* ![Une image contenant texte, diagramme, capture dÆécran, Tracé  Le contenu généré par lÆIA peut être incorrect.](data:image/png;base64...)![Une image contenant texte, capture dÆécran, logiciel, Icône dÆordinateur  Le contenu généré par lÆIA peut être incorrect.](data:image/png;base64...)
-* ![Une image contenant texte, capture dÆécran, Police, logiciel  Le contenu généré par lÆIA peut être incorrect.](data:image/png;base64...) ![Une image contenant texte, capture dÆécran, Police, nombre  Le contenu généré par lÆIA peut être incorrect.](data:image/png;base64...)
-* ![Une image contenant texte, capture dÆécran, nombre  Le contenu généré par lÆIA peut être incorrect.](data:image/png;base64...)
+* ![](/images/Image11.png)![](/images/Image12.png)
+* ![](/images/Image13.png) ![](/images/Image14.png)
+* ![](/images/Image15.png)
 
 # Comment créer un projet Django
 
