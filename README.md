@@ -186,23 +186,23 @@ Django utilise le patterná**MVT**á(Modèle-Vue-Template) :
 
 1. Utilisateur accède Ó une URL (ex: /statistiques/)
 
-?
+↓
 
 2. Django cherche l'URL dans le fichier **urls.py**
 
-?
+↓
 
 3. Django appelle la vue correspondante (view) : fichier **views.py**
 
-?
+↓
 
 4. La vue interroge le modèle (base de données) : fichier **models.py**
 
-?
+↓
 
 5. La vue rend le template avec les données : fichiers **.html** du dossier **templates**
 
-?
+↓
 
 6. Django retourne le HTML au navigateur
 
@@ -212,11 +212,11 @@ L'ORM (Object Relational Mapper) permet de manipuler la base de données sans SQ
 
 # Au lieu de :
 ```
-# SELECT \* FROM weather\_mesure WHERE temperature > 25
+# SELECT * FROM weather_mesure WHERE temperature > 25
 ```
 # Vous écrivez :
 ```
-mesures = Mesure.objects.filter(temperature\_\_gt=25)
+mesures = Mesure.objects.filter(temperature__gt=25)
 ```
 Aide en ligne : <https://python.doctor/page-django-query-set-queryset-manager>
 
@@ -236,51 +236,29 @@ Django propose une architecture bien structurée : séparation entre la logique 
 Le fichier de configuration ***meteo\_dashboard/settings.py***ácontient les paramètres de configuration. Vérifiez que lÆapplication créée "meteo" est indiquée dans INSTALLED\_APPS ainsi que la configuration pour la langue et le fuseau horaire. Le dossier o¨ seront stockés les fichiers statiques (feuilles de style et javascript) doit Ûtre indiqué également :
 ```
 INSTALLED\_APPS = [
-
 'django.contrib.admin',
-
 'django.contrib.auth',
-
 'django.contrib.contenttypes',
-
 'django.contrib.sessions',
-
 'django.contrib.messages',
-
 'django.contrib.staticfiles',
-
 'meteo',
-
 ]
-
 # Base de données SQLite
-
 DATABASES = {
-
 'default': {
-
 'ENGINE': 'django.db.backends.sqlite3',
-
 'NAME': BASE\_DIR / 'db.sqlite3',
-
 }
-
 }
-
 # Fuseau horaire
-
 TIME\_ZONE = 'Europe/Paris'
 
 USE\_TZ = True
-
 # Langue
-
 LANGUAGE\_CODE = 'fr-fr'
-
 # Configuration des fichiers statiques
-
 STATIC\_URL = '/static/'
-
 STATICFILES\_DIRS = [BASE\_DIR / 'weather' / 'static']
 ```
 Pour sauvegarder les paramètres importants (connexion MQTT et communication sécurisée avec votre application Django par lÆintermédiaire dÆune SECRET-KEY), un fichier fichierá***.env***áest utilisé :
